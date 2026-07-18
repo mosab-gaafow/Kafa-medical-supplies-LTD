@@ -1,34 +1,33 @@
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/motions/reveal";
-import { HomeAboutPreview } from "@/components/sections/home-about-preview";
+import { AboutCompanyOverview } from "@/components/sections/about-company-overview";
+import { AboutLocation } from "@/components/sections/about-location";
+import { AboutPageHero } from "@/components/sections/about-page-hero";
 import { HomeContactCta } from "@/components/sections/home-contact-cta";
-import { HomeHero } from "@/components/sections/home-hero";
-import { HomeProductPreview } from "@/components/sections/home-product-preview";
 import { HomeValues } from "@/components/sections/home-values";
 import { siteConfig } from "@/lib/site-config";
 
-const pageTitle =
-  "Kafa Medical Supplies LTD | Medical Supplies in Kenya";
+const pageTitle = "About Us";
+
+const socialTitle = `About ${siteConfig.name}`;
 
 const pageDescription =
-  "Kafa Medical Supplies LTD supplies medical gloves, IV drips, syringes, diagnostic devices, laboratory equipment, PPE and healthcare consumables across Kenya.";
+  "Learn about Kafa Medical Supplies LTD, a Kenya-focused supplier of medical products, healthcare consumables, diagnostic devices, laboratory equipment and PPE.";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: pageTitle,
-  },
+  title: pageTitle,
 
   description: pageDescription,
 
   alternates: {
-    canonical: "/",
+    canonical: "/about",
   },
 
   openGraph: {
-    title: pageTitle,
+    title: socialTitle,
     description: pageDescription,
-    url: "/",
+    url: "/about",
     type: "website",
     siteName: siteConfig.name,
     locale: siteConfig.locale,
@@ -36,26 +35,26 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary",
-    title: pageTitle,
+    title: socialTitle,
     description: pageDescription,
   },
 };
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <main>
-      <HomeHero />
+      <AboutPageHero />
 
-      <Reveal>
+      <Reveal distance={16}>
+        <AboutCompanyOverview />
+      </Reveal>
+
+      <Reveal distance={16}>
         <HomeValues />
       </Reveal>
 
       <Reveal distance={16}>
-        <HomeProductPreview />
-      </Reveal>
-
-      <Reveal distance={16}>
-        <HomeAboutPreview />
+        <AboutLocation />
       </Reveal>
 
       <Reveal distance={12}>

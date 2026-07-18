@@ -1,26 +1,238 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Kafa Medical Design Foundation
+ *
+ * These colours are working values based on the approved screenshots.
+ * They can be adjusted later when final exported design values are available.
+ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-sans: var(--font-hanken);
+  --font-display: var(--font-bricolage);
+  --font-mono: var(--font-plex-mono);
+
+  /* Kafa teal */
+  --color-brand-50: #eaf7f5;
+  --color-brand-100: #cfece8;
+  --color-brand-200: #a5d9d2;
+  --color-brand-300: #73c1b8;
+  --color-brand-400: #3fa69b;
+  --color-brand-500: #218c81;
+  --color-brand-600: #117a70;
+  --color-brand-700: #0c625b;
+  --color-brand-800: #0b504b;
+  --color-brand-900: #0a413e;
+
+  /* Coral accent */
+  --color-accent-50: #fff2ed;
+  --color-accent-100: #ffddd2;
+  --color-accent-200: #ffb9a6;
+  --color-accent-300: #ff947a;
+  --color-accent-400: #ff6b52;
+  --color-accent-500: #f34b31;
+  --color-accent-600: #da351e;
+  --color-accent-700: #b72b19;
+
+  /* Clinical neutral colours */
+  --color-ink-25: #fbfcfc;
+  --color-ink-50: #f6f8f8;
+  --color-ink-100: #edf1f2;
+  --color-ink-200: #dde4e6;
+  --color-ink-300: #c5d0d4;
+  --color-ink-400: #93a2a9;
+  --color-ink-500: #65747c;
+  --color-ink-700: #344149;
+  --color-ink-900: #111b21;
+  --color-ink-950: #071114;
+
+  /* Semantic aliases */
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f5f8f8;
+  --color-surface-inverse: #071315;
+  --color-text-strong: #111b21;
+  --color-text-muted: #65747c;
+  --color-border-default: #dde4e6;
+
+  /* Semantic feedback */
+  --color-success: #13a865;
+  --color-warning: #e99a05;
+  --color-danger: #df3737;
+  --color-info: #337fd6;
+
+  /* Border radius */
+  --radius-button: 0.75rem;
+  --radius-card: 1rem;
+  --radius-large: 1.5rem;
+  --radius-hero: 2rem;
+
+  /* Shadows */
+  --shadow-card:
+    0 1px 2px rgb(7 17 20 / 4%),
+    0 8px 24px rgb(7 17 20 / 6%);
+
+  --shadow-lifted:
+    0 8px 24px rgb(7 17 20 / 8%),
+    0 24px 56px rgb(7 17 20 / 10%);
+
+  --shadow-brand:
+    0 10px 30px rgb(17 122 112 / 22%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base website styles */
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--color-surface);
+    color: var(--color-text-strong);
+    font-family: var(--font-hanken), Arial, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-bricolage), Arial, sans-serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: var(--color-brand-200);
+    color: var(--color-ink-950);
+  }
+
+  :where(a, button, input, textarea, select, summary):focus-visible {
+    outline: 3px solid var(--color-accent-400);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Reusable brand effects */
+
+.brand-gradient {
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgb(255 148 122 / 50%),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 15% 10%,
+      rgb(115 193 184 / 65%),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      var(--color-brand-500),
+      var(--color-brand-900)
+    );
+}
+
+.mist-background {
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgb(207 236 232 / 55%),
+      transparent 35%
+    ),
+    var(--color-surface-sunken);
+}
+
+.display-title {
+  font-family: var(--font-bricolage), Arial, sans-serif;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.section-title {
+  font-family: var(--font-bricolage), Arial, sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.section-spacing {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+@keyframes kafa-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kafa-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-copy-enter {
+  animation: kafa-fade-up 600ms ease-out both;
+}
+
+.hero-visual-enter {
+  animation: kafa-fade-in 700ms 100ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .hero-copy-enter,
+  .hero-visual-enter {
+    animation: none;
+  }
 }
