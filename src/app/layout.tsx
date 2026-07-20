@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Bricolage_Grotesque,
   Hanken_Grotesk,
@@ -10,7 +10,11 @@ import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MotionProvider } from "@/components/motions/motion-provider";
-import { siteConfig } from "@/lib/site-config";
+import { company } from "@/content/company";
+import {
+  createAbsoluteUrl,
+  siteConfig,
+} from "@/lib/site-config";
 
 const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -59,15 +63,39 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} | Medical Supplies in Kenya`,
     description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
 
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${siteConfig.name} | Medical Supplies in Kenya`,
     description: siteConfig.description,
+    images: [siteConfig.ogImage.url],
   },
 
   category: "Medical supplies",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#117a70",
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: company.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  telephone: company.phoneInternational,
+  email: company.email,
+  foundingDate: String(company.establishedYear),
+  image: createAbsoluteUrl(siteConfig.ogImage.url),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: `${company.locationName}, ${company.street}, ${company.area}`,
+    addressLocality: company.city,
+    addressCountry: "KE",
+  },
 };
 
 type RootLayoutProps = Readonly<{
@@ -87,6 +115,16 @@ export default function RootLayout({
     "antialiased",
   ].join(" ")}
 >
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(organizationJsonLd).replace(
+        /</g,
+        "\\u003c",
+      ),
+    }}
+  />
+
   <MotionProvider>
     <a
       href="#main-content"

@@ -1,5 +1,5 @@
 export type CompanyValueIcon =
-  | "certified"
+  | "sourcing"
   | "delivery"
   | "quality"
   | "customer";

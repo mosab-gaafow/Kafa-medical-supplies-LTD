@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Kafa Medical",
 
   description:
-    "Kafa Medical Supplies LTD supplies medical products and healthcare supplies to hospitals, clinics, laboratories, and other healthcare facilities in Kenya.",
+    "Kafa Medical Supplies LTD supplies medical gloves, injection supplies, IV drips and infusion supplies, and the URIT-82 blood glucose meter to hospitals, clinics and other healthcare facilities in Kenya.",
 
   url: "https://kafamedical.com",
   locale: "en_KE",
@@ -20,6 +20,13 @@ export const siteConfig = {
     area: "Eastleigh",
     city: "Nairobi",
     country: "Kenya",
+  },
+
+  ogImage: {
+    url: "/images/brand/kafa_logo.png",
+    width: 736,
+    height: 224,
+    alt: "Kafa Medical Supplies logo",
   },
 } as const;
 

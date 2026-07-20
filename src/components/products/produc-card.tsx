@@ -2,19 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  ImageIcon,
+  Stethoscope,
 } from "lucide-react";
-import { ProductItem } from "@/types/products";
+import { Product } from "@/types/products";
 
 
 type ProductCardProps = {
-  product: ProductItem;
-  categoryName: string;
+  product: Product;
 };
 
 export function ProductCard({
   product,
-  categoryName,
 }: ProductCardProps) {
   const quoteUrl = `/contact?subject=${encodeURIComponent(
     `Quote request: ${product.name}`,
@@ -23,7 +21,7 @@ export function ProductCard({
   return (
     <article
       className={[
-        "flex h-full flex-col overflow-hidden",
+        "group flex h-full flex-col overflow-hidden",
         "rounded-card border border-border-default",
         "bg-white shadow-card",
         "transition duration-200",
@@ -37,43 +35,47 @@ export function ProductCard({
           <Image
             src={product.imageSrc}
             alt={
-              product.imageAlt ??
-              `${product.name} medical product`
+              product.imageAlt ?? product.name
             }
             fill
             sizes={[
-              "(min-width: 1024px) 33vw",
-              "(min-width: 640px) 50vw",
+              "(min-width: 1280px) 256px",
+              "(min-width: 640px) 45vw",
               "100vw",
             ].join(", ")}
-            className="object-cover"
+            className={[
+              "object-cover",
+              "transition duration-500",
+              "group-hover:scale-[1.03]",
+            ].join(" ")}
           />
         ) : (
-          <div className="flex h-full items-center justify-center p-6 text-center">
-            <div>
-              <ImageIcon
+          <div
+            className={[
+              "brand-gradient flex h-full",
+              "items-center justify-center p-6",
+            ].join(" ")}
+          >
+            <div className="flex flex-col items-center text-center">
+              <Stethoscope
                 aria-hidden="true"
-                size={32}
+                size={30}
                 strokeWidth={1.5}
-                className="mx-auto text-brand-500"
+                className="text-white"
               />
 
-              <p className="mt-4 text-sm text-text-muted">
-                Product image will be added later.
+              <p className="mt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
+                Kafa Medical
               </p>
             </div>
           </div>
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-700">
-          {categoryName}
-        </p>
-
-        <h2 className="mt-3 text-xl font-bold tracking-tight text-text-strong">
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <h3 className="text-xl font-bold tracking-tight text-text-strong">
           {product.name}
-        </h2>
+        </h3>
 
         <p className="mt-3 text-sm leading-6 text-text-muted">
           {product.shortDescription}
@@ -81,9 +83,11 @@ export function ProductCard({
 
         <Link
           href={quoteUrl}
+          aria-label={`Request a quote for ${product.name}`}
           className={[
-            "mt-6 inline-flex min-h-11 items-center",
-            "gap-2 font-semibold text-brand-700",
+            "group/cta mt-auto inline-flex min-h-11",
+            "items-center gap-2 pt-6",
+            "font-semibold text-brand-700",
             "transition-colors hover:text-brand-800",
           ].join(" ")}
         >
@@ -92,6 +96,10 @@ export function ProductCard({
           <ArrowRight
             aria-hidden="true"
             size={17}
+            className={[
+              "transition-transform duration-200",
+              "group-hover/cta:translate-x-1",
+            ].join(" ")}
           />
         </Link>
       </div>

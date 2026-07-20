@@ -19,7 +19,7 @@ const pageTitle = "Contact Us";
 const socialTitle = `Contact ${siteConfig.name}`;
 
 const pageDescription =
-  "Contact Kafa Medical Supplies LTD to request a quote for medical supplies, healthcare consumables, diagnostic devices, laboratory equipment and PPE in Kenya.";
+  "Contact Kafa Medical Supplies LTD to request a quote for medical gloves, injection supplies, IV drips and infusion supplies, and the URIT-82 blood glucose meter in Kenya.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -37,12 +37,14 @@ export const metadata: Metadata = {
     type: "website",
     siteName: siteConfig.name,
     locale: siteConfig.locale,
+    images: [siteConfig.ogImage],
   },
 
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: socialTitle,
     description: pageDescription,
+    images: [siteConfig.ogImage.url],
   },
 };
 

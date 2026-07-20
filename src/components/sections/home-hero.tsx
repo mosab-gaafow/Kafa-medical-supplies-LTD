@@ -10,19 +10,10 @@ import { Container } from "@/components/shared/container";
 import { ButtonLink } from "@/components/ui/button";
 
 const trustItems = [
-  "Certified suppliers",
-  "Fast delivery",
-  "Premium quality",
+  "Trusted sourcing",
+  "Reliable delivery",
+  "Dependable quality",
 ] as const;
-
-const temporaryBadgeClasses = [
-  "absolute left-3 top-3 z-10",
-  "rounded-full border border-white/30",
-  "bg-surface-inverse/65 px-3 py-1",
-  "font-mono text-[8px] font-semibold",
-  "uppercase tracking-[0.12em]",
-  "text-white backdrop-blur-md",
-].join(" ");
 
 export function HomeHero() {
   return (
@@ -48,10 +39,10 @@ export function HomeHero() {
             </h1>
 
             <p className="mt-7 max-w-xl text-base leading-8 text-text-muted sm:text-lg">
-              Gloves, IV drips, syringes, diagnostics,
-              laboratory equipment and PPE — quality-assured
-              products delivered to hospitals, clinics,
-              laboratories and pharmacies across Kenya.
+              Medical gloves, injection supplies, IV drips
+              and infusion supplies, and the URIT-82 blood
+              glucose meter — supplied to hospitals, clinics
+              and healthcare facilities across Kenya.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -113,19 +104,14 @@ export function HomeHero() {
             <div className="brand-gradient relative overflow-hidden rounded-hero p-4 shadow-lifted sm:p-5">
               <div className="grid min-h-[440px] grid-cols-[1.25fr_0.85fr] gap-3 sm:min-h-[500px]">
                 <div className="relative overflow-hidden rounded-large bg-brand-800">
-                  <span className={temporaryBadgeClasses}>
-                    Temporary image
-                  </span>
-
                   <Image
-                    src="/images/products/medical-gloves.jpg"
-                    alt="Medical examination gloves and healthcare supplies"
+                    src="/images/products/syringes-needles.webp"
+                    alt="Medical syringes with graduation markings"
                     fill
                     priority
                     sizes={[
-                      "(min-width: 1024px) 35vw",
-                      "(min-width: 640px) 60vw",
-                      "65vw",
+                      "(min-width: 640px) 300px",
+                      "47vw",
                     ].join(", ")}
                     className="object-cover"
                   />
@@ -138,18 +124,13 @@ export function HomeHero() {
 
                 <div className="grid gap-3">
                   <div className="relative overflow-hidden rounded-large bg-brand-800">
-                    <span className={temporaryBadgeClasses}>
-                      Temporary
-                    </span>
-
                     <Image
-                      src="/images/products/blood-glucose-meters.jpg"
-                      alt="Blood glucose meter and testing accessories"
+                      src="/images/products/blood-glucose-meters.webp"
+                      alt="Handheld blood glucose meter displaying a reading in mmol/L"
                       fill
                       sizes={[
-                        "(min-width: 1024px) 16vw",
-                        "(min-width: 640px) 30vw",
-                        "35vw",
+                        "(min-width: 640px) 205px",
+                        "32vw",
                       ].join(", ")}
                       className="object-cover"
                     />
@@ -161,18 +142,13 @@ export function HomeHero() {
                   </div>
 
                   <div className="relative overflow-hidden rounded-large bg-brand-800">
-                    <span className={temporaryBadgeClasses}>
-                      Temporary
-                    </span>
-
                     <Image
-                      src="/images/products/iv-infusion.jpg"
-                      alt="IV infusion and medical consumable supplies"
+                      src="/images/products/iv-infusion.webp"
+                      alt="IV fluid bag connected to an infusion giving set"
                       fill
                       sizes={[
-                        "(min-width: 1024px) 16vw",
-                        "(min-width: 640px) 30vw",
-                        "35vw",
+                        "(min-width: 640px) 205px",
+                        "32vw",
                       ].join(", ")}
                       className="object-cover"
                     />

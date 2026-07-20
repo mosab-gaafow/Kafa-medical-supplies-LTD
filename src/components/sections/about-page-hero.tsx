@@ -26,12 +26,12 @@ export function AboutPageHero() {
 
             <p className="mt-6 max-w-xl text-base leading-8 text-text-muted sm:text-lg">
               Kafa Medical Supplies LTD supplies medical and
-              healthcare products to hospitals, clinics,
-              laboratories and pharmacies across Kenya.
+              healthcare products to hospitals, clinics and
+              other healthcare facilities across Kenya.
             </p>
 
             <p className="mt-4 max-w-xl text-base leading-8 text-text-muted">
-              We focus on dependable sourcing, premium quality,
+              We focus on dependable sourcing, consistent quality,
               responsive customer service and reliable delivery.
             </p>
 
@@ -71,11 +71,11 @@ export function AboutPageHero() {
 
             <div className="relative aspect-[4/3] overflow-hidden rounded-hero bg-brand-50 shadow-lifted">
               <Image
-                src="/images/products/laboratory-equipment.jpg"
-                alt="Medical laboratory equipment supplied to healthcare facilities"
+                src="/images/products/blood-glucose-meters_1.webp"
+                alt="URIT-82 handheld blood glucose meter"
                 fill
                 priority
-                sizes="(min-width: 1024px) 45vw, 100vw"
+                sizes="(min-width: 640px) 560px, 100vw"
                 className="object-cover"
               />
 
@@ -83,19 +83,6 @@ export function AboutPageHero() {
                 aria-hidden="true"
                 className="absolute inset-0 bg-gradient-to-t from-ink-950/55 via-transparent to-transparent"
               />
-
-              <span
-                className={[
-                  "absolute left-4 top-4",
-                  "rounded-full border border-white/30",
-                  "bg-surface-inverse/65 px-3 py-1",
-                  "font-mono text-[9px] font-semibold",
-                  "uppercase tracking-[0.14em]",
-                  "text-white backdrop-blur-md",
-                ].join(" ")}
-              >
-                Temporary image
-              </span>
 
               <div className="absolute bottom-5 left-5 right-5 grid gap-3 sm:grid-cols-2">
                 <div className="flex items-center gap-3 rounded-card border border-white/30 bg-white/90 p-4 shadow-card backdrop-blur-lg">

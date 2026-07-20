@@ -20,18 +20,18 @@ export function ProductsPageHero() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-text-muted sm:text-lg">
-            Browse our medical supply categories.
-            Select a category to learn more or contact us
-            to request a quote for the products your
+            The products we supply to healthcare
+            facilities across Kenya. Contact us to
+            request a quote for the products your
             facility needs.
           </p>
 
           <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
             <ButtonLink
-              href="#product-categories"
+              href="#products"
               size="large"
             >
-              Browse categories
+              View products
 
               <ArrowDown
                 aria-hidden="true"

@@ -2,19 +2,19 @@ import type { CompanyValue } from "@/types/company-value";
 
 export const companyValues: CompanyValue[] = [
   {
-    title: "Certified suppliers",
+    title: "Trusted sourcing",
     description:
-      "We source medical products from certified and trusted suppliers.",
-    icon: "certified",
+      "We source medical products from suppliers we trust.",
+    icon: "sourcing",
   },
   {
-    title: "Fast delivery",
+    title: "Reliable delivery",
     description:
       "We provide reliable delivery for healthcare facilities across Kenya.",
     icon: "delivery",
   },
   {
-    title: "Premium quality",
+    title: "Dependable quality",
     description:
       "We focus on dependable medical equipment and healthcare consumables.",
     icon: "quality",

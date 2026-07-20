@@ -1,26 +1,70 @@
-# Temporary Website Assets
+# Website Image Assets
 
-These images are temporary development assets.
+Status of every image in `public/images/`. Update this file whenever an image
+is added, approved or removed.
 
-They must be reviewed and replaced or properly licensed before the
-Kafa Medical Supplies LTD website is launched.
+The site must never ship an image showing manufacturer branding, packaging
+copy, trademarks, model numbers, lot numbers, expiry dates or certification
+marks — unless the owner has explicitly approved that specific file.
 
-| Image | Status | Original source |
+## Approved
+
+| Image | Used for | Why it is acceptable |
 |---|---|---|
-| medical-gloves.jpg | Temporary | Add source URL |
-| iv-infusion.jpg | Temporary | Add source URL |
-| syringes-needles.jpg | Temporary | Add source URL |
-| blood-glucose-meters.jpg | Temporary | Add source URL |
-| laboratory-equipment.jpg | Temporary | Add source URL |
-| ppe-protective-wear.jpg | Temporary | Add source URL |
-| diagnostic-devices.jpg | Temporary | Add source URL |
-| medical-supplies-company.jpg | Temporary | Add source URL |
+| `products/blood-glucose-meters_1.webp` | URIT-82 product card, About page hero, home about preview | **Owner-approved exception.** Shows "URIT-82" on the device. Approved for this one file only — it is not a precedent for any other branded or generated image. |
+| `products/blood-glucose-meters.webp` | Home hero collage | Unbranded generic meter, no packaging |
+| `products/iv-infusion.webp` | IV Drips product card, home hero collage | Unbranded, no text |
+| `products/syringes-needles.webp` | Injection Supplies product card, home hero collage (lead tile) | Unbranded, graduation markings only |
+| `products/medica-gloves1.webp` | Medical Gloves product card | Owner-supplied. Unbranded pair of gloves, no packaging, no text, no certification marks |
+| `brand/kafa_logo.png` | Header, footer | The real company logo |
+
+These six are the only images referenced anywhere in `src/`. The five product
+photos were converted from PNG to WebP (quality 82, via `sharp`, already a
+project dependency) — sizes dropped 93–99% (790KB–1.14MB each down to
+8–30KB) with no visible quality loss. The logo was left as PNG; it's already
+small (20–54KB) and touching it wasn't part of this pass.
+
+## Deleted in Phase 1 ✅
+
+All four were removed after a zero-reference grep on their exact paths.
+
+| Image | Reason |
+|---|---|
+| `products/medical-gloves.png` | Generated packaging with invented box copy |
+| `products/surgical-cloves.png` | Fabricated certification marks — "ISO 13485", "CE 0123" |
+| `products/URIT-G80.png` | Manufacturer trademark, fabricated lot number `G80S2405001` and expiry dates. Also the wrong product — the company supplies the URIT-82 |
+| `products/blood-met.png` | Blood pressure monitor; no such product in scope |
+
+Two visuals were repointed as part of this: the home hero's lead tile moved
+from `medical-gloves.png` to `syringes-needles.webp`, and the home about
+preview moved from `URIT-G80.png` to `blood-glucose-meters_1.webp` (both now
+WebP after the compression pass below).
+
+## Placeholder — resolved
+
+**Medical Gloves** previously had no approved image and shipped on a branded
+placeholder (`brand-gradient` surface, `Stethoscope` outline, "Kafa Medical").
+The owner supplied `products/medica-gloves1.webp` (converted from the
+originally supplied PNG) and it is now wired into `src/content/products.ts`;
+the placeholder branch in `ProductCard` is unused for this product going
+forward but was left in the component, since it's still the correct fallback
+if `imageSrc` is ever unset for a future product.
+
+Every "Temporary image" badge has been removed from the site.
+
+`products/surgical-cloves.png` reappeared in the folder after being deleted in
+Phase 1, was flagged, and the owner deleted it again directly. Gone for good
+this time — same reason as the first deletion (fabricated certification
+marks, "ISO 13485", "CE 0123").
+
+## Unreferenced
+
+`brand/kafa-logo.png` — not used anywhere; only `kafa_logo.png` is referenced.
+Left in place deliberately. Confirm with the owner before removing.
 
 ## Before launch
 
-- Confirm image licences
-- Replace any unsuitable images
-- Remove temporary-image badges
-- Compress final images
-- Check all image alt text
-- Confirm that no private patient information is visible
+- Confirm licensing for every remaining image
+- ~~Compress final images~~ — done: the five product photos are WebP now
+- Check all alt text describes the image accurately and claims nothing extra
+- Confirm no private patient information is visible in any image

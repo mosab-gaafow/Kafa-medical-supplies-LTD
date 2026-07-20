@@ -5,13 +5,12 @@ import {
 } from "lucide-react";
 
 import { Reveal } from "@/components/motions/reveal";
-import { ProductCategoryCard } from "@/components/products/product-category-card";
-import { ProductCategoryNavigation } from "@/components/products/product-category-navigation";
+import { ProductCard } from "@/components/products/produc-card";
 import { ProductsPageHero } from "@/components/sections/products-page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Container } from "@/components/shared/container";
 import { ButtonLink } from "@/components/ui/button";
-import { productCategories } from "@/content/product-categories";
+import { products } from "@/content/products";
 import { siteConfig } from "@/lib/site-config";
 
 const pageTitle = "Medical Products and Supplies in Kenya";
@@ -19,7 +18,7 @@ const pageTitle = "Medical Products and Supplies in Kenya";
 const socialTitle = `${pageTitle} | ${siteConfig.name}`;
 
 const pageDescription =
-  "Explore medical gloves, IV and infusion supplies, syringes, diagnostic devices, laboratory equipment, PPE and healthcare consumables from Kafa Medical Supplies LTD in Kenya.";
+  "Medical gloves, injection supplies, IV drips and infusion supplies, and the URIT-82 blood glucose meter from Kafa Medical Supplies LTD in Kenya.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -37,12 +36,14 @@ export const metadata: Metadata = {
     type: "website",
     siteName: siteConfig.name,
     locale: siteConfig.locale,
+    images: [siteConfig.ogImage],
   },
 
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: socialTitle,
     description: pageDescription,
+    images: [siteConfig.ogImage.url],
   },
 };
 
@@ -53,26 +54,22 @@ export default function ProductsPage() {
 
       <Reveal distance={16}>
         <section
-          id="product-categories"
+          id="products"
           className="section-spacing scroll-mt-24 bg-white"
         >
           <Container>
             <SectionHeading
-              eyebrow="Product categories"
-              title="Everything your facility needs."
-              description="Choose a category to view more information. Product availability and specifications will be confirmed when you request a quote."
+              eyebrow="Our products"
+              title="What we supply."
+              description="Product availability, specifications and quantities are confirmed when you request a quote."
               align="center"
             />
 
-            <div className="mt-10">
-              <ProductCategoryNavigation />
-            </div>
-
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {productCategories.map((category) => (
-                <ProductCategoryCard
-                  key={category.slug}
-                  category={category}
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-4">
+              {products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
                 />
               ))}
             </div>
@@ -99,13 +96,13 @@ export default function ProductsPage() {
               </div>
 
               <h2 className="mx-auto mt-6 max-w-2xl font-display text-3xl font-bold tracking-tight text-text-strong sm:text-4xl">
-                Cannot find the product you need?
+                Ready to request a quote?
               </h2>
 
               <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-text-muted">
-                Send us your product name, quantity and
-                specifications. Our team will check availability
-                and prepare a suitable quote.
+                Tell us the product, quantity and any
+                specifications you need. Our team will confirm
+                availability and prepare a suitable quote.
               </p>
 
               <div className="mt-8">

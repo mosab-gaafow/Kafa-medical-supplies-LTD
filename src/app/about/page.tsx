@@ -13,7 +13,7 @@ const pageTitle = "About Us";
 const socialTitle = `About ${siteConfig.name}`;
 
 const pageDescription =
-  "Learn about Kafa Medical Supplies LTD, a Kenya-focused supplier of medical products, healthcare consumables, diagnostic devices, laboratory equipment and PPE.";
+  "Learn about Kafa Medical Supplies LTD, a Kenya-focused supplier of medical gloves, injection supplies, IV drips and infusion supplies, and the URIT-82 blood glucose meter.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -31,12 +31,14 @@ export const metadata: Metadata = {
     type: "website",
     siteName: siteConfig.name,
     locale: siteConfig.locale,
+    images: [siteConfig.ogImage],
   },
 
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: socialTitle,
     description: pageDescription,
+    images: [siteConfig.ogImage.url],
   },
 };
 

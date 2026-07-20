@@ -12,7 +12,7 @@ const pageTitle =
   "Kafa Medical Supplies LTD | Medical Supplies in Kenya";
 
 const pageDescription =
-  "Kafa Medical Supplies LTD supplies medical gloves, IV drips, syringes, diagnostic devices, laboratory equipment, PPE and healthcare consumables across Kenya.";
+  "Kafa Medical Supplies LTD supplies medical gloves, injection supplies, IV drips and infusion supplies, and the URIT-82 blood glucose meter across Kenya.";
 
 export const metadata: Metadata = {
   title: {
@@ -32,12 +32,14 @@ export const metadata: Metadata = {
     type: "website",
     siteName: siteConfig.name,
     locale: siteConfig.locale,
+    images: [siteConfig.ogImage],
   },
 
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
+    images: [siteConfig.ogImage.url],
   },
 };
 

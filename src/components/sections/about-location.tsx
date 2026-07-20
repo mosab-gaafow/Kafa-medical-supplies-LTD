@@ -20,6 +20,10 @@ const contactLinkClasses = [
   "hover:text-brand-700",
 ].join(" ");
 
+const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
+  company.address,
+)}&output=embed`;
+
 export function AboutLocation() {
   return (
     <section className="section-spacing bg-surface-sunken">
@@ -115,6 +119,17 @@ export function AboutLocation() {
               </a>
             </div>
           </address>
+        </div>
+
+        <div className="mt-10 overflow-hidden rounded-hero border border-border-default shadow-card lg:mt-14">
+          <iframe
+            src={mapEmbedSrc}
+            title="Map showing the location of Kafa Medical Supplies LTD in Eastleigh, Nairobi"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            className="h-70 w-full border-0 sm:h-90 lg:h-105"
+          />
         </div>
       </Container>
     </section>

@@ -1,6 +1,5 @@
-import Link from "next/link";
 import {
-  ArrowUpRight,
+  Check,
   FileText,
   HandHeart,
   MapPinned,
@@ -8,7 +7,7 @@ import {
 
 import { Container } from "@/components/shared/container";
 import { company } from "@/content/company";
-import { productCategories } from "@/content/product-categories";
+import { products } from "@/content/products";
 import { SectionHeading } from "./section-heading";
 
 const highlights = [
@@ -86,40 +85,29 @@ export function AboutCompanyOverview() {
             </h2>
 
             <p className="mt-4 max-w-2xl text-base leading-7 text-text-muted">
-              Our product categories cover medical consumables,
-              diagnostic devices, laboratory equipment and
-              protective supplies.
+              We supply four products to healthcare
+              facilities in Kenya.
             </p>
 
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-              {productCategories.map((category) => (
-                <li key={category.slug}>
-                  <Link
-                    href={`/products/${category.slug}`}
-                    className={[
-                      "group flex min-h-14 items-center",
-                      "justify-between gap-4 rounded-button",
-                      "border border-border-default bg-white",
-                      "px-4 py-3 text-sm font-semibold",
-                      "text-text-strong shadow-card",
-                      "transition duration-200",
-                      "hover:border-brand-300",
-                      "hover:text-brand-700",
-                    ].join(" ")}
-                  >
-                    <span>{category.name}</span>
+              {products.map((product) => (
+                <li
+                  key={product.id}
+                  className={[
+                    "flex min-h-14 items-center",
+                    "gap-3 rounded-button",
+                    "border border-border-default bg-white",
+                    "px-4 py-3 text-sm font-semibold",
+                    "text-text-strong shadow-card",
+                  ].join(" ")}
+                >
+                  <Check
+                    aria-hidden="true"
+                    size={17}
+                    className="shrink-0 text-brand-600"
+                  />
 
-                    <ArrowUpRight
-                      aria-hidden="true"
-                      size={17}
-                      className={[
-                        "shrink-0 text-brand-600",
-                        "transition-transform duration-200",
-                        "group-hover:-translate-y-0.5",
-                        "group-hover:translate-x-0.5",
-                      ].join(" ")}
-                    />
-                  </Link>
+                  <span>{product.name}</span>
                 </li>
               ))}
             </ul>

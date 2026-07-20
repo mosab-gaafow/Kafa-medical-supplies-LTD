@@ -24,6 +24,7 @@ type ButtonProps = SharedButtonProps &
 
 type ButtonLinkProps = SharedButtonProps & {
   href: string;
+  "aria-label"?: string;
 };
 
 const baseClasses = [
@@ -111,10 +112,12 @@ export function ButtonLink({
   variant = "primary",
   size = "medium",
   className = "",
+  "aria-label": ariaLabel,
 }: ButtonLinkProps) {
   return (
     <Link
       href={href}
+      aria-label={ariaLabel}
       className={getButtonClasses({
         variant,
         size,

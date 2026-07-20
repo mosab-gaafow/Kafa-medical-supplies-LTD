@@ -50,10 +50,10 @@ export function HomeAboutPreview() {
 
            <div className="relative min-h-[370px] overflow-hidden rounded-large sm:min-h-[436px]">
   <Image
-    src="/images/products/laboratory-equipment.jpg"
-    alt="Medical and laboratory supplies for healthcare facilities"
+    src="/images/products/blood-glucose-meters_1.webp"
+    alt="URIT-82 handheld blood glucose meter"
     fill
-    sizes="(min-width: 1024px) 45vw, 100vw"
+    sizes="(min-width: 1024px) 470px, 100vw"
     className="object-cover"
   />
 
@@ -61,19 +61,6 @@ export function HomeAboutPreview() {
     aria-hidden="true"
     className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent"
   />
-
-  <span
-    className={[
-      "absolute left-4 top-4",
-      "rounded-full border border-white/30",
-      "bg-surface-inverse/65 px-3 py-1",
-      "font-mono text-[9px] font-semibold",
-      "uppercase tracking-[0.14em]",
-      "text-white backdrop-blur-md",
-    ].join(" ")}
-  >
-    Temporary image
-  </span>
 </div>
 
             <div className="absolute bottom-8 left-8 right-8 rounded-card border border-white/30 bg-white/90 p-4 shadow-card backdrop-blur-lg sm:left-auto sm:w-[220px]">
@@ -95,7 +82,7 @@ export function HomeAboutPreview() {
             <SectionHeading
               eyebrow="About Kafa Medical"
               title="Reliable medical supply, focused on Kenya."
-              description="Kafa Medical Supplies LTD provides medical and healthcare products for hospitals, clinics, laboratories and pharmacies across Kenya. We focus on dependable sourcing, clear communication and helpful customer support."
+              description="Kafa Medical Supplies LTD provides medical and healthcare products for hospitals, clinics and other healthcare facilities across Kenya. We focus on dependable sourcing, clear communication and helpful customer support."
             />
 
             <div className="mt-9 space-y-6">

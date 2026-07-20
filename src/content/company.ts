@@ -7,7 +7,7 @@ export const company = {
   market: "Kenya",
 
   description:
-    "Premium medical supplies and healthcare products for hospitals, clinics, laboratories and pharmacies across Kenya.",
+    "Medical gloves, injection supplies, IV drips and infusion supplies, and the URIT-82 blood glucose meter for hospitals, clinics and other healthcare facilities across Kenya.",
 
   phoneDisplay: "0722 818 199",
   phoneInternational: "+254 722 818 199",

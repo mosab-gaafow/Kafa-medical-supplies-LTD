@@ -1,8 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  BadgeCheck,
   Gem,
   HandHeart,
+  Handshake,
   Truck,
 } from "lucide-react";
 
@@ -12,7 +12,7 @@ import type { CompanyValueIcon } from "@/types/company-value";
 import { SectionHeading } from "./section-heading";
 
 const iconMap: Record<CompanyValueIcon, LucideIcon> = {
-  certified: BadgeCheck,
+  sourcing: Handshake,
   delivery: Truck,
   quality: Gem,
   customer: HandHeart,
