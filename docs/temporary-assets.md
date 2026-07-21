@@ -17,8 +17,9 @@ marks — unless the owner has explicitly approved that specific file.
 | `products/syringes-needles.webp` | Injection Supplies product card, home hero collage (lead tile) | Unbranded, graduation markings only |
 | `products/medica-gloves1.webp` | Medical Gloves product card | Owner-supplied. Unbranded pair of gloves, no packaging, no text, no certification marks |
 | `brand/kafa_logo.png` | Header, footer | The real company logo |
+| `brand/kafa-og-image.png` | Social share image (`openGraph`/`twitter` on every page) | Generated locally via `sharp` — the real logo composited onto a 1200×630 canvas filled with the brand gradient (`brand-700` → `brand-600`, the site's own tokens). No new artwork, text or claims; just the existing approved logo resized onto the standard social-card aspect ratio |
 
-These six are the only images referenced anywhere in `src/`. The five product
+These seven are the only images referenced anywhere in `src/`. The five product
 photos were converted from PNG to WebP (quality 82, via `sharp`, already a
 project dependency) — sizes dropped 93–99% (790KB–1.14MB each down to
 8–30KB) with no visible quality loss. The logo was left as PNG; it's already
@@ -59,12 +60,13 @@ marks, "ISO 13485", "CE 0123").
 
 ## Unreferenced
 
-`brand/kafa-logo.png` — not used anywhere; only `kafa_logo.png` is referenced.
-Left in place deliberately. Confirm with the owner before removing.
+None. `brand/kafa-logo.png` (the unused duplicate) was deleted by the owner
+directly.
 
 ## Before launch
 
-- Confirm licensing for every remaining image
+- ~~Confirm licensing for every remaining image~~ — done: the owner has
+  confirmed the current images are okay to use
 - ~~Compress final images~~ — done: the five product photos are WebP now
 - Check all alt text describes the image accurately and claims nothing extra
 - Confirm no private patient information is visible in any image

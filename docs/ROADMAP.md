@@ -60,8 +60,9 @@ future product URLs and risk a loop against `/products` itself.
 
 ## Outstanding — needs the owner
 
-Nothing currently blocking. `products/surgical-cloves.png` was deleted by the
-owner directly.
+Nothing currently blocking. `products/surgical-cloves.png` and
+`brand/kafa-logo.png` were both deleted by the owner directly. Image licensing
+is confirmed — the owner has signed off on the current images.
 
 ### SEO pass — resolved
 
@@ -73,13 +74,17 @@ owner directly.
   — nothing invented. No ratings, reviews, opening hours or price range, since
   none of those are confirmed facts.
 - **Social share image** — every page's `openGraph.images` /
-  `twitter.images` now points at the real company logo
-  (`siteConfig.ogImage`, added to `site-config.ts`), and Twitter cards
-  upgraded from `summary` to `summary_large_image`. Previously zero pages had
-  a share image at all. The logo's aspect ratio (736×224) isn't the ideal
-  1.91:1 for social cards, so it may get letterboxed on some platforms — a
-  dedicated 1200×630 banner would look better, but that's a design asset this
-  project doesn't have, not a code fix. Flagging it rather than generating one.
+  `twitter.images` now points at `brand/kafa-og-image.png`
+  (`siteConfig.ogImage`, in `site-config.ts`), and Twitter cards upgraded from
+  `summary` to `summary_large_image`. Previously zero pages had a share image
+  at all.
+- **Dedicated 1200×630 share banner — resolved.** The original approach used
+  the raw logo (736×224), which isn't the standard 1.91:1 social-card ratio
+  and could get letterboxed. Generated `public/images/brand/kafa-og-image.png`
+  locally with a one-off `sharp` script: the same approved logo, resized and
+  composited onto a 1200×630 canvas filled with the site's own brand gradient
+  (`--color-brand-700` → `--color-brand-600`). No new artwork or invented
+  claims — just the existing logo placed on the correct canvas size.
 - **`viewport.themeColor`** added (`#117a70`, the existing `brand-600` token)
   so mobile browser chrome matches the brand on Android/iOS.
 - Each of the four pages needed its own `images`/`card` update, not just the
@@ -107,7 +112,6 @@ owner directly.
 
 ## Later
 
-- Confirm licensing for all remaining images before launch
-- Consider a dedicated 1200×630 social share image, rather than the logo
-- `public/images/brand/kafa-logo.png` is unreferenced; only `kafa_logo.png` is
-  used. Left alone deliberately — confirm before removing
+Nothing outstanding. The home-hero H1 ("Premium medical supplies you can
+trust.") still uses "Premium" and remains a live open question — flagged
+above under "Copy fixes", awaiting an explicit decision from the owner.

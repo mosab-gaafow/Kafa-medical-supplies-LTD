@@ -23,9 +23,9 @@ export const siteConfig = {
   },
 
   ogImage: {
-    url: "/images/brand/kafa_logo.png",
-    width: 736,
-    height: 224,
+    url: "/images/brand/kafa-og-image.png",
+    width: 1200,
+    height: 630,
     alt: "Kafa Medical Supplies logo",
   },
 } as const;
