@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 import { createContactEmail } from "@/lib/email/contact-email";
 import { checkRateLimit } from "@/lib/security/rate-limit";
@@ -225,8 +225,18 @@ export async function POST(
     );
   }
 
-  const apiKey =
-    process.env.RESEND_API_KEY;
+  const smtpHost =
+    process.env.SMTP_HOST;
+
+  const smtpPort =
+    process.env.SMTP_PORT;
+
+  const smtpUser =
+    process.env.SMTP_USER;
+
+  const smtpPassword =
+    process.env
+      .SMTP_PASSWORD;
 
   const fromEmail =
     process.env
@@ -237,7 +247,10 @@ export async function POST(
       .CONTACT_TO_EMAIL;
 
   if (
-    !apiKey ||
+    !smtpHost ||
+    !smtpPort ||
+    !smtpUser ||
+    !smtpPassword ||
     !fromEmail ||
     !toEmail
   ) {
@@ -256,52 +269,48 @@ export async function POST(
     );
   }
 
-  const resend =
-    new Resend(apiKey);
+  const port = Number(smtpPort);
+
+  const secure =
+    process.env.SMTP_SECURE ===
+    "true";
+
+  const transporter =
+    nodemailer.createTransport({
+      host: smtpHost,
+      port,
+      secure,
+
+      auth: {
+        user: smtpUser,
+        pass: smtpPassword,
+      },
+    });
 
   const emailContent =
     createContactEmail(
       contactData,
     );
 
+  const safeSenderName =
+    contactData.fullName.replace(
+      /[\r\n"<>]/g,
+      "",
+    );
+
+  const fromHeader = `"${safeSenderName} (via website)" <${fromEmail}>`;
+
   try {
-    const {
-      error,
-    } =
-      await resend.emails.send({
-        from: fromEmail,
-        to: [toEmail],
-        replyTo:
-          contactData.email,
-        subject:
-          emailContent.subject,
-        html: emailContent.html,
-        text: emailContent.text,
-
-        tags: [
-          {
-            name: "source",
-            value: "contact-form",
-          },
-        ],
-      });
-
-    if (error) {
-      console.error(
-        "Resend email error:",
-        error,
-      );
-
-      return Response.json(
-        {
-          message:
-            "We could not send your enquiry. Please try again or contact us directly.",
-        },
-        {
-          status: 502,
-        },
-      );
-    }
+    await transporter.sendMail({
+      from: fromHeader,
+      to: toEmail,
+      replyTo:
+        contactData.email,
+      subject:
+        emailContent.subject,
+      html: emailContent.html,
+      text: emailContent.text,
+    });
 
     return Response.json({
       success: true,
@@ -310,17 +319,17 @@ export async function POST(
     });
   } catch (error) {
     console.error(
-      "Contact form error:",
+      "Contact form email error:",
       error,
     );
 
     return Response.json(
       {
         message:
-          "An unexpected error occurred. Please try again or contact us directly.",
+          "We could not send your enquiry. Please try again or contact us directly.",
       },
       {
-        status: 500,
+        status: 502,
       },
     );
   }

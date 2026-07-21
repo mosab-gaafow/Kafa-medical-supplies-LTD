@@ -28,7 +28,7 @@ Docs live at `node_modules/next/dist/docs/`:
 | @hookform/resolvers | 5.4.0 |
 | motion | 12.42.2 |
 | lucide-react | 1.25.0 |
-| resend | 6.17.2 |
+| nodemailer | 9.0.3 |
 | typescript | 5.x |
 
 Tailwind is v4 — configuration is CSS-first in `src/app/globals.css`, not a

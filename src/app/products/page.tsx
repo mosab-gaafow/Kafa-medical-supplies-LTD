@@ -5,6 +5,10 @@ import {
 } from "lucide-react";
 
 import { Reveal } from "@/components/motions/reveal";
+import {
+  StaggerGrid,
+  StaggerItem,
+} from "@/components/motions/stagger-grid";
 import { ProductCard } from "@/components/products/produc-card";
 import { ProductsPageHero } from "@/components/sections/products-page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -65,14 +69,16 @@ export default function ProductsPage() {
               align="center"
             />
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-4">
+            <StaggerGrid className="mt-12 grid gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-4">
               {products.map((product) => (
-                <ProductCard
+                <StaggerItem
                   key={product.id}
-                  product={product}
-                />
+                  className="h-full"
+                >
+                  <ProductCard product={product} />
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGrid>
           </Container>
         </section>
       </Reveal>

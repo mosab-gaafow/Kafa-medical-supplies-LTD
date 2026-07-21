@@ -2,6 +2,10 @@ import { ArrowRight } from "lucide-react";
 
 import { ProductCard } from "@/components/products/produc-card";
 import { Container } from "@/components/shared/container";
+import {
+  StaggerGrid,
+  StaggerItem,
+} from "@/components/motions/stagger-grid";
 import { ButtonLink } from "@/components/ui/button";
 import { products } from "@/content/products";
 import { SectionHeading } from "./section-heading";
@@ -31,14 +35,16 @@ export function HomeProductPreview() {
           </ButtonLink>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-4">
+        <StaggerGrid className="mt-12 grid gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-4">
           {products.map((product) => (
-            <ProductCard
+            <StaggerItem
               key={product.id}
-              product={product}
-            />
+              className="h-full"
+            >
+              <ProductCard product={product} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
       </Container>
     </section>
   );

@@ -6,6 +6,10 @@ import {
 } from "lucide-react";
 
 import { Container } from "@/components/shared/container";
+import {
+  StaggerGrid,
+  StaggerItem,
+} from "@/components/motions/stagger-grid";
 import { company } from "@/content/company";
 import { products } from "@/content/products";
 import { SectionHeading } from "./section-heading";
@@ -43,36 +47,35 @@ export function AboutCompanyOverview() {
               description={`${company.name} was established in ${company.established}. The company supplies medical and healthcare products within Kenya.`}
             />
 
-            <div className="mt-9 space-y-6">
+            <StaggerGrid className="mt-9 space-y-6">
               {highlights.map((highlight) => {
                 const Icon = highlight.icon;
 
                 return (
-                  <article
-                    key={highlight.title}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="flex size-11 shrink-0 items-center justify-center rounded-button bg-brand-50 text-brand-700">
-                      <Icon
-                        aria-hidden="true"
-                        size={21}
-                        strokeWidth={1.8}
-                      />
-                    </div>
+                  <StaggerItem key={highlight.title}>
+                    <article className="flex items-start gap-4">
+                      <div className="flex size-11 shrink-0 items-center justify-center rounded-button bg-brand-50 text-brand-700">
+                        <Icon
+                          aria-hidden="true"
+                          size={21}
+                          strokeWidth={1.8}
+                        />
+                      </div>
 
-                    <div>
-                      <h3 className="text-lg font-bold tracking-tight text-text-strong">
-                        {highlight.title}
-                      </h3>
+                      <div>
+                        <h3 className="text-lg font-bold tracking-tight text-text-strong">
+                          {highlight.title}
+                        </h3>
 
-                      <p className="mt-2 text-sm leading-6 text-text-muted">
-                        {highlight.description}
-                      </p>
-                    </div>
-                  </article>
+                        <p className="mt-2 text-sm leading-6 text-text-muted">
+                          {highlight.description}
+                        </p>
+                      </div>
+                    </article>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </StaggerGrid>
           </div>
 
           <div className="rounded-hero border border-border-default bg-surface-sunken p-6 sm:p-8">
@@ -89,10 +92,14 @@ export function AboutCompanyOverview() {
               facilities in Kenya.
             </p>
 
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            <StaggerGrid
+              as="ul"
+              className="mt-8 grid gap-3 sm:grid-cols-2"
+            >
               {products.map((product) => (
-                <li
+                <StaggerItem
                   key={product.id}
+                  as="li"
                   className={[
                     "flex min-h-14 items-center",
                     "gap-3 rounded-button",
@@ -108,9 +115,9 @@ export function AboutCompanyOverview() {
                   />
 
                   <span>{product.name}</span>
-                </li>
+                </StaggerItem>
               ))}
-            </ul>
+            </StaggerGrid>
           </div>
         </div>
       </Container>

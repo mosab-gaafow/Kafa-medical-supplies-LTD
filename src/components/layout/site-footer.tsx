@@ -163,9 +163,18 @@ export function SiteFooter() {
               © {currentYear} {company.name}. All rights reserved.
             </p>
 
-            <p>
-              Medical supplies for the Kenyan market.
-            </p>
+            <div className="flex items-center gap-5">
+              <p>
+                Medical supplies for the Kenyan market.
+              </p>
+
+              <Link
+                href="/privacy"
+                className="min-h-11 py-1 transition-colors hover:text-white"
+              >
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
       </Container>

@@ -32,9 +32,9 @@ export function HomeHero() {
             </p>
 
             <h1 className="display-title max-w-3xl text-text-strong">
-              Premium medical supplies you can{" "}
+              Trusted medical supplies for Kenyan{" "}
               <span className="text-brand-600">
-                trust.
+                healthcare facilities.
               </span>
             </h1>
 

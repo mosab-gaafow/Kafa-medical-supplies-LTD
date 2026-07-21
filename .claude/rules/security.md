@@ -54,5 +54,5 @@ message.
 
 The site collects enquiry details through the contact form. Do not log message
 bodies or personal details to the console, do not add analytics or third-party
-trackers, and do not send form data anywhere other than the existing Resend
-integration.
+trackers, and do not send form data anywhere other than the existing SMTP
+integration (`src/app/api/contact/route.ts`, via `nodemailer`).
